@@ -8,3 +8,15 @@ before_install:
 
 script:
   - docker run -e CI=true tunghn1/firstreactapp npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "First_React"
+  env: "Firstreact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-500252921102"
+  bucket_path: "First_React"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
