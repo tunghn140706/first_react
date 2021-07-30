@@ -1,0 +1,10 @@
+sudo: required
+language: generic 
+services: 
+  - docker 
+
+before_install: 
+  - docker build -t tunghn1/firstreactapp -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true tunghn1/firstreactapp npm run test
